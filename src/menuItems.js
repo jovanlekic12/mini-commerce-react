@@ -1,4 +1,4 @@
-export const items = [
+const items = [
   {
     id: "1",
     name: "Sushi",
@@ -24,3 +24,5 @@ export const items = [
     price: 18.99,
   },
 ];
+
+export default items;
