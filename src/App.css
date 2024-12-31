@@ -6,10 +6,12 @@
 
 html {
   font-size: 62.5%;
+  width: 100%;
 }
 
 body {
-  background-color: rgb(185, 210, 212);
+  background-color: #c1c6ca;
+  width: 100%;
 }
 
 .title,
@@ -27,6 +29,9 @@ body {
 
 .navbar__div {
   position: relative;
+}
+
+main {
 }
 
 nav {
@@ -67,6 +72,7 @@ nav {
 }
 
 .search__bar h1 {
+  font-size: 1.7rem;
   font-weight: 600;
 }
 
@@ -76,4 +82,59 @@ nav {
   padding: 0.2rem 1rem;
   border: 0;
   outline: 0;
+  width: 30%;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 80%;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem 5rem;
+  border-radius: 2rem;
+  max-width: 100rem;
+}
+
+.menu__list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+ul li:not(:last-child) {
+  border-bottom: 1px solid #c2c2c2;
+}
+.menu__list__item p {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.amount__div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.amount__div input {
+  font-size: 1.5rem;
+  width: 4rem;
+  border: 1px solid #c2c2c2;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  font-weight: 600;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.add__btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import items from "../menuItems";
 
 const initialState = {
-  menuItems: [items],
+  menuItems: items,
 };
 
 const globalSlice = createSlice({
