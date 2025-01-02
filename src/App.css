@@ -31,9 +31,6 @@ body {
   position: relative;
 }
 
-main {
-}
-
 nav {
   color: #fff;
   background-color: #000;
@@ -85,7 +82,8 @@ nav {
   width: 30%;
 }
 
-.menu__list {
+.menu__list,
+.cart__list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -137,4 +135,45 @@ ul li:not(:last-child) {
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
   margin-top: 1rem;
+}
+
+.primary__btn {
+  display: block;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  margin: 0 auto;
+}
+
+.total__price__div {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: fit-content;
+  padding: 2rem 2rem;
+  gap: 1rem;
+  align-items: center;
+  justify-self: center;
+  margin-left: 50rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+
+.total__price__div p {
+  font-size: 2rem;
+}
+
+.empty__cart {
+  margin-top: 15rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.amount__btn {
+  font-size: 2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid gray;
+  background-color: #d8dadc;
+  cursor: pointer;
 }

@@ -11,13 +11,18 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    clearCart: (state) => {
-      state.cartItems = [];
-    },
-    addCartItem: (state, action) => {
-      let item = action.payload;
-      item = { ...item, amount: 1 };
-      state.cartItems.push(item);
+    addCartItem: (state, { payload }) => {
+      if (!state.cartItems.some((item) => item.id === payload.props.id)) {
+        let item = payload.props;
+        item = { ...item, amount: payload.amount };
+        console.log(item);
+        state.cartItems.push(item);
+      } else {
+        const cartItem = state.cartItems.find(
+          (item) => item.id === payload.props.id
+        );
+        cartItem.amount = cartItem.amount + payload.amount;
+      }
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
@@ -30,12 +35,10 @@ const cartSlice = createSlice({
     decrease: (state, { payload }) => {
       const cartItem = state.cartItems.find((item) => item.id === payload.id);
       if (cartItem.amount === 1) {
-        state.cartItems = state.cartItems.filter(
-          (item) => item.id !== payload.id
-        );
         return;
+      } else {
+        cartItem.amount = cartItem.amount - 1;
       }
-      cartItem.amount = cartItem.amount - 1;
     },
     calculateTotals: (state) => {
       let amount = 0;
@@ -57,7 +60,7 @@ export const selectTotalAmount = createSelector([selectItems], (items) =>
 );
 
 export const selectTotalPrice = createSelector([selectItems], (items) =>
-  items.reduce((price, item) => price + item.unitPrice * item.amount, 0)
+  items.reduce((price, item) => price + item.price * item.amount, 0)
 );
 
 export const {

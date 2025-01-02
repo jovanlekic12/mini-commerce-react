@@ -1,6 +1,9 @@
 import { Link } from "react-router";
-
+import { selectTotalAmount } from "../feature/cartSlice";
+import { useSelector } from "react-redux";
 function Navbar() {
+  const totalAmount = useSelector(selectTotalAmount);
+
   return (
     <nav>
       <div className="nav-div">
@@ -23,7 +26,7 @@ function Navbar() {
             ></path>
           </svg>
           <div className="navbar__amount__div">
-            <p>0</p>
+            <p>{totalAmount}</p>
           </div>
         </div>
       </div>

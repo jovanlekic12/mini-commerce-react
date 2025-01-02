@@ -1,6 +1,10 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../feature/cartSlice";
 function MenuItem(props) {
+  const [amount, setAmount] = useState(1);
   const { id, name, description, price } = props;
-
+  const dispatch = useDispatch();
   return (
     <li className="menu__list__item">
       <div className="item__div">
@@ -11,9 +15,18 @@ function MenuItem(props) {
       <div className="item__div__quantity">
         <div className="amount__div">
           <h2>Amount</h2>
-          <input type="number" />
+          <input
+            type="number"
+            value={amount}
+            onChange={(event) => setAmount(event.target.value)}
+          />
         </div>
-        <button className="add__btn btn">+Add</button>
+        <button
+          className="add__btn btn"
+          onClick={() => dispatch(addCartItem({ props, amount }))}
+        >
+          +Add
+        </button>
       </div>
     </li>
   );
