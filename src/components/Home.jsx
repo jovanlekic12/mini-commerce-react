@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Button from "./ui/Button";
 import Navbar from "./navbar";
 import SearchBar from "./SearchBar";
 import MenuItem from "./MenuItem";
@@ -13,14 +14,13 @@ function Home() {
       <Navbar></Navbar>
       <SearchBar></SearchBar>
       <ul className="menu__list">
-        {menuItems &&
-          menuItems.map((item) => {
-            return <MenuItem {...item} key={item.id}></MenuItem>;
-          })}
+        {menuItems.map((item) => {
+          return <MenuItem {...item} key={item.id}></MenuItem>;
+        })}
       </ul>
-      <button onClick={() => navigate("cart")} className="btn primary__btn">
+      <Button onClick={() => navigate("cart")} type="primary">
         Go to your cart
-      </button>
+      </Button>
       <div className="total__price__div">
         <h1>Total Price:</h1>
         <p>{totalPrice.toFixed(2)}$</p>

@@ -2,9 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "@reduxjs/toolkit";
 const initialState = {
   cartItems: [],
-  price: 0,
-  amount: 0,
-  isOpened: false,
 };
 
 const cartSlice = createSlice({
@@ -15,13 +12,12 @@ const cartSlice = createSlice({
       if (!state.cartItems.some((item) => item.id === payload.props.id)) {
         let item = payload.props;
         item = { ...item, amount: payload.amount };
-        console.log(item);
         state.cartItems.push(item);
       } else {
         const cartItem = state.cartItems.find(
           (item) => item.id === payload.props.id
         );
-        cartItem.amount = cartItem.amount + payload.amount;
+        cartItem.amount = Number(cartItem.amount) + Number(payload.amount);
       }
     },
     increase: (state, { payload }) => {
@@ -42,7 +38,7 @@ const cartSlice = createSlice({
 const selectItems = (state) => state.cart.cartItems;
 
 export const selectTotalAmount = createSelector([selectItems], (items) =>
-  items.reduce((amount, item) => amount + item.amount, 0)
+  items.reduce((amount, item) => Number(amount) + Number(item.amount), 0)
 );
 
 export const selectTotalPrice = createSelector([selectItems], (items) =>

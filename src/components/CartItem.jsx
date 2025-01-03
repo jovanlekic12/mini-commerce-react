@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { increase, decrease } from "../feature/cartSlice";
+import Button from "./ui/Button";
 function CartItem(props) {
   const { id, name, description, price, amount } = props;
   const dispatch = useDispatch();
@@ -12,19 +13,13 @@ function CartItem(props) {
       </div>
       <div className="item__div__quantity">
         <div className="amount__div">
-          <button
-            className="amount__btn"
-            onClick={() => dispatch(decrease({ id }))}
-          >
+          <Button type="amount" onClick={() => dispatch(decrease({ id }))}>
             -
-          </button>
+          </Button>
           <h2>{amount}</h2>
-          <button
-            className="amount__btn"
-            onClick={() => dispatch(increase({ id }))}
-          >
+          <Button type="amount" onClick={() => dispatch(increase({ id }))}>
             +
-          </button>
+          </Button>
         </div>
       </div>
     </li>

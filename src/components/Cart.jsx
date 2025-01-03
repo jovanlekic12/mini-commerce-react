@@ -3,6 +3,7 @@ import Navbar from "./navbar";
 import { useNavigate } from "react-router";
 import { selectTotalPrice } from "../feature/cartSlice";
 import CartItem from "./CartItem";
+import Button from "./ui/Button";
 function Cart() {
   const { cartItems } = useSelector((store) => store.cart);
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ function Cart() {
               return <CartItem {...item} key={item.id}></CartItem>;
             })}
           </ul>
-          <button onClick={() => navigate("/")} className="btn primary__btn">
+          <Button onClick={() => navigate("/")} type="primary">
             Back to products
-          </button>
+          </Button>
           <div className="total__price__div">
             <h1>Total Price:</h1>
             <p>{totalPrice.toFixed(2)}$</p>
